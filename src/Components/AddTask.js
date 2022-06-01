@@ -14,7 +14,7 @@ export default function AddTask() {
             dispatch(addTodo({
                 id: new Date().getTime(),
                 text: input,
-                done: true
+                done: false
             }))
             setInput("")
         }
