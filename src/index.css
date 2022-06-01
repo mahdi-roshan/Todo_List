@@ -1,13 +1,47 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: Vazir;
+  src: url('./Assets/Fonts/Vazir-Thin.eot');
+  src: url('./Assets/Fonts/Vazir-Thin.eot?#iefix') format('embedded-opentype'),
+      url('./Assets/Fonts/Vazir-Thin.woff2') format('woff2'),
+      url('./Assets/Fonts/Vazir-Thin.woff') format('woff'),
+      url('./Assets/Fonts/Vazir-Thin.ttf') format('truetype');
+  font-weight: 100;
+  font-display: swap;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+@font-face {
+  font-family: Vazir;
+  src: url('./Assets/Fonts/Vazir-Light.eot');
+  src: url('./Assets/Fonts/Vazir-Light.eot?#iefix') format('embedded-opentype'),
+      url('./Assets/Fonts/Vazir-Light.woff2') format('woff2'),
+      url('./Assets/Fonts/Vazir-Light.woff') format('woff'),
+      url('./Assets/Fonts/Vazir-Light.ttf') format('truetype');
+  font-weight: 300;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Vazir;
+  src: url('./Assets/Fonts/Vazir-Medium.eot');
+  src: url('./Assets/Fonts/Vazir-Medium.eot?#iefix') format('embedded-opentype'),
+      url('./Assets/Fonts/Vazir-Medium.woff2') format('woff2'),
+      url('./Assets/Fonts/Vazir-Medium.woff') format('woff'),
+      url('./Assets/Fonts/Vazir-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Vazir;
+  src: url('./Assets/Fonts/Vazir-Black.eot');
+  src: url('./Assets/Fonts/Vazir-Black.eot?#iefix') format('embedded-opentype'),
+      url('./Assets/Fonts/Vazir-Black.woff2') format('woff2'),
+      url('./Assets/Fonts/Vazir-Black.woff') format('woff'),
+      url('./Assets/Fonts/Vazir-Black.ttf') format('truetype');
+  font-weight: 900;
+  font-display: swap;
 }
