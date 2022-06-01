@@ -4,11 +4,11 @@
 
 @font-face {
   font-family: Vazir;
-  src: url('./Assets/fonts/Vazir-Thin.eot');
-  src: url('./Assets/fonts/Vazir-Thin.eot?#iefix') format('embedded-opentype'),
-      url('./Assets/fonts/Vazir-Thin.woff2') format('woff2'),
-      url('./Assets/fonts/Vazir-Thin.woff') format('woff'),
-      url('./Assets/fonts/Vazir-Thin.ttf') format('truetype');
+  src: url('./Assets/Fonts/Vazir-Thin.eot');
+  src: url('./Assets/Fonts/Vazir-Thin.eot?#iefix') format('embedded-opentype'),
+      url('./Assets/Fonts/Vazir-Thin.woff2') format('woff2'),
+      url('./Assets/Fonts/Vazir-Thin.woff') format('woff'),
+      url('./Assets/Fonts/Vazir-Thin.ttf') format('truetype');
   font-weight: 100;
   font-display: swap;
 }
