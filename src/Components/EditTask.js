@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { editTodo } from '../Store/Slices/TodoSlice';
+import { EditInServer } from '../Services/Api'
 
 export default function EditTask({ data, setEdit }) {
     const dispatch = useDispatch();
@@ -8,9 +9,14 @@ export default function EditTask({ data, setEdit }) {
     const inputHandler = (e) => {
         setInput(e.target.value)
     }
-    const handleTodo = () => {
-        dispatch(editTodo({ id: data.id, text: input }))
-        setEdit(false)
+    const handleTodo = async () => {
+        try {
+            let response = await EditInServer(data.id, { ...data, text: input });
+            dispatch(editTodo({ id: data.id, text: input }))
+            setEdit(false)
+        } catch (err) {
+            alert()
+        }
     }
     const closeEdit = () => {
         setEdit(false)

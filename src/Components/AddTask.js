@@ -1,6 +1,7 @@
 
 import { useState } from "react"
 import { useDispatch } from "react-redux";
+import { addToServer } from '../Services/Api'
 import { addTodo } from '../Store/Slices/TodoSlice'
 
 export default function AddTask() {
@@ -8,15 +9,20 @@ export default function AddTask() {
     const dispatch = useDispatch()
     const [input, setInput] = useState("");
     const handleInput = e => setInput(e.target.value);
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         if (input.length > 0) {
-            dispatch(addTodo({
-                id: new Date().getTime(),
-                text: input,
-                done: false
-            }))
-            setInput("")
+            try {
+                let response = await addToServer({
+                    text: input,
+                    done: false
+                })
+                dispatch(addTodo(response.data.data))
+                setInput("")
+            } catch (err) {
+                setInput("")
+                alert(err)
+            }
         }
     }
 
