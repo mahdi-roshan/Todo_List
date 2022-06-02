@@ -1,16 +1,33 @@
 import { useState } from 'react'
 import { deleteTodo, doneTodo } from "../Store/Slices/TodoSlice";
 import { useDispatch } from 'react-redux'
+import { changeStatus, deleteFromServer } from '../Services/Api'
 import EditTask from './EditTask'
 export default function TaskList({ todo }) {
-
+    
     const [edit, setEdit] = useState(false)
     const dispatch = useDispatch();
-    const deleteHandler = () => dispatch(deleteTodo(todo.id))
-    const doneHandler = () => dispatch(doneTodo(todo.id))
+    const deleteHandler = async () => {
+        try {
+            let response = await deleteFromServer(todo.id)
+            dispatch(deleteTodo(todo.id))
+        } catch (err) {
+            alert(err)
+        }
+
+    }
+    const doneHandler = async () => {
+        try {
+            let response = await changeStatus(todo.id, { ...todo, done: !todo.done });
+            dispatch(doneTodo(todo.id))
+        } catch (err) {
+            alert(err)
+        }
+    }
     const editHandler = () => {
         setEdit(true);
     }
+
     return (
         <>
             {
@@ -24,7 +41,7 @@ export default function TaskList({ todo }) {
                                 </label>
                             </div>
                             <div className="flex">
-                                <svg onClick={editHandler} xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-white ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                                <svg onClick={editHandler} xmlns="http://www .w3.org/2000/svg" className="h-6 w-6 text-white ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
                                     <path strokeLinecap="round" strokeLinejoin="round" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
                                 </svg>
                                 <svg onClick={deleteHandler} id={todo.id} xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
@@ -33,7 +50,7 @@ export default function TaskList({ todo }) {
                             </div>
                         </div>
                     </div>
-                    : <EditTask data={todo} setEdit={setEdit}/>
+                    : <EditTask data={todo} setEdit={setEdit} />
             }
         </>
     );
